@@ -168,7 +168,7 @@ def home():
     elif option == 'Departments':
         departments()
 
-st.title('HEALTHCARE INFORMATION MANAGEMENT SYSTEM')
+st.title('HEALTHCARE MANAGEMENT SYSTEM')
 password = st.sidebar.text_input('Enter password', type = 'password')       # user password authentication
 if password == config.password:
     st.sidebar.success('Verified')
