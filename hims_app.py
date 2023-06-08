@@ -168,7 +168,9 @@ def home():
     elif option == 'Departments':
         departments()
 
+
 st.title('HEALTHCARE MANAGEMENT SYSTEM')
+st.markdown("<h4 style='font-size: 32px;'>Streamlined Healthcare Management for Improved Patient Care</h4>", unsafe_allow_html=True)
 password = st.sidebar.text_input('Enter password', type = 'password')       # user password authentication
 if password == config.password:
     st.sidebar.success('Verified')
@@ -177,3 +179,4 @@ elif password == '':
     st.empty()
 else:
     st.sidebar.error('Invalid password')
+    
