@@ -166,7 +166,6 @@ def home():
     db.db_init()        # establishes connection to the database and create tables (if they don't exist yet)
     option = st.sidebar.selectbox('Select module', ['', 'Patients', 'Doctors', 'Prescriptions', 'Medical Tests', 'Departments'])
     if option == 'Patients':
-        st.experimental_set_query_params()
         patients()
     elif option == 'Doctors':
         doctors()
