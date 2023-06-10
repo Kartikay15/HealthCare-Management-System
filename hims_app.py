@@ -7,6 +7,7 @@ from prescription import Prescription
 from medical_test import Medical_Test
 import config
 import sqlite3 as sql
+from PIL import Image
 
 # function to verify edit mode password
 def verify_edit_mode_password():
@@ -153,11 +154,19 @@ def departments():
         st.subheader('DOCTORS OF A PARTICULAR DEPARTMENT')
         d.list_dept_doctors()
 
+def show_img():
+    image = Image.open("images/heart-rate.png")
+    st.write("\n")
+    st.write("\n")
+    st.write("\n")
+    st.image(image, caption="Healthcare At Fingertips", width=600)
+
 # function to implement and initialise home/main menu on successful user authentication
 def home():
     db.db_init()        # establishes connection to the database and create tables (if they don't exist yet)
     option = st.sidebar.selectbox('Select module', ['', 'Patients', 'Doctors', 'Prescriptions', 'Medical Tests', 'Departments'])
     if option == 'Patients':
+        st.experimental_set_query_params()
         patients()
     elif option == 'Doctors':
         doctors()
@@ -171,6 +180,7 @@ def home():
 
 st.title('HEALTHCARE MANAGEMENT SYSTEM')
 st.markdown("<h4 style='font-size: 32px;'>Streamlined Healthcare Management for Improved Patient Care</h4>", unsafe_allow_html=True)
+show_img()
 password = st.sidebar.text_input('Enter password', type = 'password')       # user password authentication
 if password == config.password:
     st.sidebar.success('Verified')
@@ -179,4 +189,3 @@ elif password == '':
     st.empty()
 else:
     st.sidebar.error('Invalid password')
-    
